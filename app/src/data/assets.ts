@@ -18,7 +18,59 @@ const stripeRisk = calculateRiskScore({
   walletConcentration: 28,
 });
 
+const vcxxRisk = calculateRiskScore({
+  volumeMultiplier: 1,
+  largeTransfer: false,
+  walletConcentration: 0,
+});
+
 export const assets = {
+  vcxx: {
+    name: "Fundrise Innovation Fund xStock",
+    symbol: "VCXX",
+    price: "Live",
+    risk: vcxxRisk,
+    level: getRiskLevel(vcxxRisk),
+    volume: "On-chain",
+    status: "Live Monitoring",
+    signal: "Monitoring confirmed Solana activity for unusual transaction frequency.",
+    onChainAddress: "Xs7UsqobM3EJgMeHwdAbmDBCZH1G5WTCjatpeYcCr8x",
+    dataMode: "live",
+
+    metrics: {
+      volumeMultiplier: 1,
+      largeTransfer: false,
+      walletConcentration: 0,
+    },
+
+    timeline: [
+      {
+        time: "Live",
+        title: "Solana monitoring active",
+        detail: "Confirmed transactions are being monitored directly from Solana Mainnet.",
+      },
+      {
+        time: "Live",
+        title: "Activity frequency analysis",
+        detail: "Recent transaction frequency is evaluated for abnormal activity.",
+      },
+      {
+        time: "Live",
+        title: "Risk signal",
+        detail: "The live activity score is calculated separately from the demo case metrics.",
+      },
+    ],
+
+    evidence: [
+      {
+        wallet: "Xs7U...yCc8x",
+        tx: "Live feed",
+        amount: "On-chain",
+        type: "Solana Activity",
+      },
+    ],
+  },
+
   spacex: {
     name: "SpaceX",
     symbol: "SPACEX",

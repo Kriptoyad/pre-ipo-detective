@@ -2,6 +2,7 @@
 import { assets } from "@/data/assets";
 import SolanaStatus from "@/components/SolanaStatus";
 import WalletActivity from "@/components/WalletActivity";
+import VcxxRiskScore from "@/components/VcxxRiskScore";
 
 export default function Home() {
   const assetList = Object.values(assets);
@@ -133,21 +134,27 @@ export default function Home() {
                     Risk Score
                   </p>
 
-                  <p
-                    className={`mt-1 text-2xl font-bold ${
-                      asset.risk >= 80
-                        ? "text-red-400"
-                        : asset.risk >= 60
-                          ? "text-yellow-400"
-                          : "text-green-400"
-                    }`}
-                  >
-                    {asset.risk}
-                  </p>
+                  {asset.symbol === "VCXX" ? (
+                    <VcxxRiskScore />
+                  ) : (
+                    <>
+                      <p
+                        className={`mt-1 text-2xl font-bold ${
+                          asset.risk >= 80
+                            ? "text-red-400"
+                            : asset.risk >= 60
+                              ? "text-yellow-400"
+                              : "text-green-400"
+                        }`}
+                      >
+                        {asset.risk}
+                      </p>
 
-                  <p className="text-xs text-gray-500">
-                    {asset.level} Risk
-                  </p>
+                      <p className="text-xs text-gray-500">
+                        {asset.level} Risk
+                      </p>
+                    </>
+                  )}
                 </div>
               </Link>
             ))}
