@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useEffect, useState } from "react";
 
@@ -14,6 +14,7 @@ type WalletResponse = {
   success: boolean;
   network?: string;
   address?: string;
+  activityScore?: number;
   transactions?: WalletTransaction[];
 };
 
@@ -25,7 +26,6 @@ export default function WalletActivity() {
       try {
         const response = await fetch("/api/wallet");
         const result = await response.json();
-
         setData(result);
       } catch {
         setData({ success: false });
@@ -38,7 +38,7 @@ export default function WalletActivity() {
   if (!data) {
     return (
       <div className="mt-12 rounded-2xl border border-gray-800 bg-gray-950 p-6 text-gray-500">
-        Loading Solana activity...
+        Loading VCXx on-chain activity...
       </div>
     );
   }
@@ -46,21 +46,47 @@ export default function WalletActivity() {
   if (!data.success || !data.transactions) {
     return (
       <div className="mt-12 rounded-2xl border border-red-900 bg-red-950 p-6 text-red-400">
-        Unable to load Solana activity.
+        Unable to load VCXx on-chain activity.
       </div>
     );
   }
 
+  const score = data.activityScore ?? 0;
+
   return (
     <section className="mt-12">
-      <div className="mb-5">
-        <h2 className="text-2xl font-semibold">
-          Live Solana Activity
-        </h2>
+      <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-xs font-medium text-green-400">
+            REAL SOLANA DATA
+          </p>
 
-        <p className="mt-1 text-sm text-gray-500">
-          Recent confirmed transactions from a public Solana test address
-        </p>
+          <h2 className="mt-2 text-2xl font-semibold">
+            VCXx On-chain Activity
+          </h2>
+
+          <p className="mt-1 text-sm text-gray-500">
+            Recent confirmed transactions from the monitored Solana asset address
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-gray-800 bg-gray-950 px-5 py-3">
+          <p className="text-xs text-gray-500">
+            Activity Risk
+          </p>
+
+          <p
+            className={`mt-1 text-2xl font-bold ${
+              score >= 20
+                ? "text-red-400"
+                : score >= 10
+                  ? "text-yellow-400"
+                  : "text-green-400"
+            }`}
+          >
+            {score} / 30
+          </p>
+        </div>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-gray-800 bg-gray-950">
@@ -92,7 +118,17 @@ export default function WalletActivity() {
 
             <div>
               <p className="text-xs text-gray-500">
-                Status
+                Confirmation
+              </p>
+
+              <p className="mt-1 text-sm text-green-400">
+                {tx.confirmationStatus ?? "confirmed"}
+              </p>
+            </div>
+
+            <div className="md:text-right">
+              <p className="text-xs text-gray-500">
+                Result
               </p>
 
               <p
@@ -100,26 +136,22 @@ export default function WalletActivity() {
                   tx.failed ? "text-red-400" : "text-green-400"
                 }`}
               >
-                {tx.failed ? "Failed" : "Confirmed"}
-              </p>
-            </div>
-
-            <div className="md:text-right">
-              <p className="text-xs text-gray-500">
-                Network
-              </p>
-
-              <p className="mt-1 text-sm">
-                Solana Mainnet
+                {tx.failed ? "Failed" : "Success"}
               </p>
             </div>
           </div>
         ))}
       </div>
 
-      <p className="mt-3 text-xs text-gray-600">
-        Demo feed only. These transactions are not attributed to any pre-IPO asset.
-      </p>
+      <div className="mt-3 flex flex-col gap-1 text-xs text-gray-600 md:flex-row md:items-center md:justify-between">
+        <p>
+          Activity score is calculated from recent transaction frequency.
+        </p>
+
+        <p className="font-mono">
+          {data.address}
+        </p>
+      </div>
     </section>
   );
 }
