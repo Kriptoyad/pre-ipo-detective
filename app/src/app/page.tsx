@@ -1,5 +1,6 @@
- import Link from "next/link";
+import Link from "next/link";
 import { assets } from "@/data/assets";
+import SolanaStatus from "@/components/SolanaStatus";
 
 export default function Home() {
   const assetList = Object.values(assets);
@@ -11,17 +12,23 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="mb-12">
-          <p className="mb-3 text-sm font-medium text-green-400">
-            ON-CHAIN INTELLIGENCE
-          </p>
+          <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="mb-3 text-sm font-medium text-green-400">
+                ON-CHAIN INTELLIGENCE
+              </p>
 
-          <h1 className="text-5xl font-bold">
-            Pre-IPO Detective
-          </h1>
+              <h1 className="text-5xl font-bold">
+                Pre-IPO Detective
+              </h1>
 
-          <p className="mt-4 max-w-2xl text-gray-400">
-            Detect suspicious activity in tokenized pre-IPO markets.
-          </p>
+              <p className="mt-4 max-w-2xl text-gray-400">
+                Detect suspicious activity in tokenized pre-IPO markets.
+              </p>
+            </div>
+
+            <SolanaStatus />
+          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -138,11 +145,7 @@ export default function Home() {
                   </p>
 
                   <p className="text-xs text-gray-500">
-                    {asset.risk >= 80
-                      ? "High Risk"
-                      : asset.risk >= 60
-                        ? "Medium Risk"
-                        : "Low Risk"}
+                    {asset.level} Risk
                   </p>
                 </div>
               </Link>
