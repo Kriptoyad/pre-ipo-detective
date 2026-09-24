@@ -1,6 +1,7 @@
-import Link from "next/link";
+ import Link from "next/link";
 import { assets } from "@/data/assets";
 import SolanaStatus from "@/components/SolanaStatus";
+import WalletActivity from "@/components/WalletActivity";
 
 export default function Home() {
   const assetList = Object.values(assets);
@@ -152,6 +153,8 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        <WalletActivity />
       </div>
     </main>
   );
