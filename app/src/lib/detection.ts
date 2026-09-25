@@ -59,3 +59,62 @@ export function calculateOnChainActivityScore(
 
   return 0;
 }
+export type RiskSignal = {
+  label: string;
+  points: number;
+  severity: "Low" | "Medium" | "High";
+};
+
+export function getRiskSignals(input: DetectionInput): RiskSignal[] {
+  const signals: RiskSignal[] = [];
+
+  if (input.volumeMultiplier >= 4) {
+    signals.push({
+      label: "Extreme transaction volume spike",
+      points: 40,
+      severity: "High",
+    });
+  } else if (input.volumeMultiplier >= 2) {
+    signals.push({
+      label: "Elevated transaction volume",
+      points: 25,
+      severity: "Medium",
+    });
+  } else if (input.volumeMultiplier >= 1.5) {
+    signals.push({
+      label: "Moderate transaction volume increase",
+      points: 10,
+      severity: "Low",
+    });
+  }
+
+  if (input.largeTransfer) {
+    signals.push({
+      label: "Large transfer detected",
+      points: 30,
+      severity: "High",
+    });
+  }
+
+  if (input.walletConcentration >= 70) {
+    signals.push({
+      label: "Very high wallet concentration",
+      points: 30,
+      severity: "High",
+    });
+  } else if (input.walletConcentration >= 50) {
+    signals.push({
+      label: "High wallet concentration",
+      points: 20,
+      severity: "Medium",
+    });
+  } else if (input.walletConcentration >= 30) {
+    signals.push({
+      label: "Elevated wallet concentration",
+      points: 10,
+      severity: "Low",
+    });
+  }
+
+  return signals;
+}

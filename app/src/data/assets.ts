@@ -33,8 +33,12 @@ export const assets = {
     level: getRiskLevel(vcxxRisk),
     volume: "On-chain",
     status: "Live Monitoring",
-    signal: "Monitoring confirmed Solana activity for unusual transaction frequency.",
-    onChainAddress: "Xs7UsqobM3EJgMeHwdAbmDBCZH1G5WTCjatpeYcCr8x",
+    signal:
+      "Monitoring confirmed Solana activity for unusual transaction frequency.",
+
+    onChainAddress:
+      "6ujZxnphRxTqveaQtLAQHFoWz16xhLWZbTijcgZN4fRp",
+
     dataMode: "live",
 
     metrics: {
@@ -47,23 +51,26 @@ export const assets = {
       {
         time: "Live",
         title: "Solana monitoring active",
-        detail: "Confirmed transactions are being monitored directly from Solana Mainnet.",
+        detail:
+          "Confirmed transactions are being monitored directly from Solana Mainnet.",
       },
       {
         time: "Live",
         title: "Activity frequency analysis",
-        detail: "Recent transaction frequency is evaluated for abnormal activity.",
+        detail:
+          "Recent transaction frequency is evaluated for abnormal activity.",
       },
       {
         time: "Live",
         title: "Risk signal",
-        detail: "The live activity score is calculated separately from the demo case metrics.",
+        detail:
+          "The live activity score is calculated separately from the demo case metrics.",
       },
     ],
 
     evidence: [
       {
-        wallet: "Xs7U...yCc8x",
+        wallet: "6ujZ...4fRp",
         tx: "Live feed",
         amount: "On-chain",
         type: "Solana Activity",
@@ -79,7 +86,8 @@ export const assets = {
     level: getRiskLevel(spacexRisk),
     volume: "$1.24M",
     status: "Under Investigation",
-    signal: "Large wallet activity detected before unusual market movement.",
+    signal:
+      "Large wallet activity detected before unusual market movement.",
 
     metrics: {
       volumeMultiplier: 4.8,
@@ -129,7 +137,8 @@ export const assets = {
     level: getRiskLevel(openaiRisk),
     volume: "$842K",
     status: "Monitoring",
-    signal: "Unusual volume spike detected across recent transactions.",
+    signal:
+      "Unusual volume spike detected across recent transactions.",
 
     metrics: {
       volumeMultiplier: 3.1,
@@ -141,17 +150,20 @@ export const assets = {
       {
         time: "08:15",
         title: "Volume spike",
-        detail: "Trading activity increased rapidly within a short window.",
+        detail:
+          "Trading activity increased rapidly within a short window.",
       },
       {
         time: "09:05",
         title: "Wallet concentration change",
-        detail: "A small group of wallets accumulated a larger position.",
+        detail:
+          "A small group of wallets accumulated a larger position.",
       },
       {
         time: "10:21",
         title: "Monitoring activated",
-        detail: "The asset was added to the investigation queue.",
+        detail:
+          "The asset was added to the investigation queue.",
       },
     ],
 
@@ -179,7 +191,8 @@ export const assets = {
     level: getRiskLevel(stripeRisk),
     volume: "$396K",
     status: "Normal",
-    signal: "No major suspicious activity detected.",
+    signal:
+      "No major suspicious activity detected.",
 
     metrics: {
       volumeMultiplier: 1.2,
@@ -191,17 +204,20 @@ export const assets = {
       {
         time: "07:30",
         title: "Routine market activity",
-        detail: "Volume remained inside the expected range.",
+        detail:
+          "Volume remained inside the expected range.",
       },
       {
         time: "09:40",
         title: "Wallet scan completed",
-        detail: "No unusual concentration or large transfer detected.",
+        detail:
+          "No unusual concentration or large transfer detected.",
       },
       {
         time: "11:10",
         title: "Risk score unchanged",
-        detail: "Current activity remains within normal parameters.",
+        detail:
+          "Current activity remains within normal parameters.",
       },
     ],
 

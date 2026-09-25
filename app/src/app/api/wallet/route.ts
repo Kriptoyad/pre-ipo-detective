@@ -4,7 +4,7 @@ import { solanaRpc } from "@/lib/solana";
 import { calculateOnChainActivityScore } from "@/lib/detection";
 
 const DEFAULT_ASSET_ADDRESS =
-  "Xs7UsqobM3EJgMeHwdAbmDBCZH1G5WTCjatpeYcCr8x";
+  "6ujZxnphRxTqveaQtLAQHFoWz16xhLWZbTijcgZN4fRp";
 
 export async function GET(request: Request) {
   try {
@@ -47,6 +47,7 @@ export async function GET(request: Request) {
       network: "Solana Mainnet",
       address: wallet,
       activityScore,
+      transactionCount: signatures.length,
       transactions: signatures.map((item) => ({
         signature: item.signature,
         slot: item.slot.toString(),
