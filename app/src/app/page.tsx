@@ -8,13 +8,13 @@ import PythMarketData from "@/components/PythMarketData";
 export default function Home() {
   const assetList = Object.values(assets);
 
-  const activeAlerts = assetList.filter(
-    (asset) => asset.risk >= 60
-  ).length;
+  const liveAssets = assetList.filter(
+    (asset) => asset.dataMode === "live"
+  );
 
-  const highRiskCases = assetList.filter(
-    (asset) => asset.risk >= 80
-  ).length;
+  const demoAssets = assetList.filter(
+    (asset) => asset.dataMode === "demo"
+  );
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -41,28 +41,44 @@ export default function Home() {
 
         <section className="mb-8 grid gap-4 md:grid-cols-3">
           <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
-            <p className="text-sm text-zinc-500">Assets Monitored</p>
-
-            <p className="mt-2 text-3xl font-bold">
-              {assetList.length}
+            <p className="text-sm text-zinc-500">
+              Live Assets Monitored
             </p>
-          </div>
-
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
-            <p className="text-sm text-zinc-500">Active Alerts</p>
 
             <p className="mt-2 text-3xl font-bold">
-              {activeAlerts}
+              {liveAssets.length}
+            </p>
+
+            <p className="mt-2 text-xs text-zinc-500">
+              Connected to Solana Mainnet
             </p>
           </div>
 
           <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
             <p className="text-sm text-zinc-500">
-              High Risk Cases
+              Demo Investigation Cases
             </p>
 
             <p className="mt-2 text-3xl font-bold">
-              {highRiskCases}
+              {demoAssets.length}
+            </p>
+
+            <p className="mt-2 text-xs text-zinc-500">
+              Illustrative scenarios, not live alerts
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-6">
+            <p className="text-sm text-zinc-500">
+              Live Detection
+            </p>
+
+            <p className="mt-2 text-lg font-bold text-green-400">
+              Active
+            </p>
+
+            <p className="mt-2 text-xs text-zinc-500">
+              Transaction frequency monitoring
             </p>
           </div>
         </section>
@@ -74,7 +90,8 @@ export default function Home() {
             </h2>
 
             <p className="mt-1 text-sm text-zinc-500">
-              Live and demo investigation cases
+              Live Solana monitoring and clearly labeled
+              demonstration scenarios
             </p>
           </div>
 
@@ -87,6 +104,18 @@ export default function Home() {
               >
                 <div className="grid gap-5 md:grid-cols-5 md:items-center">
                   <div>
+                    <div className="mb-2">
+                      {asset.dataMode === "live" ? (
+                        <span className="inline-flex rounded-full border border-green-800 bg-green-950 px-2 py-1 text-[10px] font-semibold tracking-wide text-green-400">
+                          LIVE ON-CHAIN
+                        </span>
+                      ) : (
+                        <span className="inline-flex rounded-full border border-yellow-800 bg-yellow-950 px-2 py-1 text-[10px] font-semibold tracking-wide text-yellow-400">
+                          DEMO CASE
+                        </span>
+                      )}
+                    </div>
+
                     <p className="font-semibold">
                       {asset.name}
                     </p>
@@ -104,6 +133,12 @@ export default function Home() {
                     <p className="mt-1 text-sm font-medium">
                       {asset.price}
                     </p>
+
+                    {asset.dataMode === "demo" && (
+                      <p className="mt-1 text-xs text-yellow-600">
+                        Illustrative
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -114,6 +149,12 @@ export default function Home() {
                     <p className="mt-1 text-sm font-medium">
                       {asset.volume}
                     </p>
+
+                    {asset.dataMode === "demo" && (
+                      <p className="mt-1 text-xs text-yellow-600">
+                        Illustrative
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -128,7 +169,9 @@ export default function Home() {
 
                   <div>
                     <p className="text-xs uppercase text-zinc-600">
-                      Risk Score
+                      {asset.dataMode === "demo"
+                        ? "Demo Risk Score"
+                        : "Activity Risk"}
                     </p>
 
                     <div className="mt-1">
@@ -145,12 +188,16 @@ export default function Home() {
                               asset.level === "High"
                                 ? "text-red-400"
                                 : asset.level === "Medium"
-                                ? "text-yellow-400"
-                                : "text-green-400"
+                                  ? "text-yellow-400"
+                                  : "text-green-400"
                             }`}
                           >
                             {asset.level} Risk
                           </span>
+
+                          <p className="mt-2 text-xs text-zinc-500">
+                            Calculated from demo inputs
+                          </p>
                         </div>
                       )}
                     </div>
@@ -158,6 +205,16 @@ export default function Home() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="border-t border-zinc-800 bg-zinc-900/30 px-6 py-4">
+            <p className="text-xs leading-relaxed text-zinc-500">
+              Data transparency: VCXX activity monitoring uses
+              confirmed Solana Mainnet transactions. SpaceX,
+              OpenAI and Stripe are illustrative scenarios with
+              simulated prices, volumes and risk inputs.
+              Demo values are not live market observations.
+            </p>
           </div>
         </section>
 

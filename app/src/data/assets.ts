@@ -35,10 +35,7 @@ export const assets = {
     status: "Live Monitoring",
     signal:
       "Monitoring confirmed Solana activity for unusual transaction frequency.",
-
-    onChainAddress:
-      "6ujZxnphRxTqveaQtLAQHFoWz16xhLWZbTijcgZN4fRp",
-
+    onChainAddress: "6ujZxnphRxTqveaQtLAQHFoWz16xhLWZbTijcgZN4fRp",
     dataMode: "live",
 
     metrics: {
@@ -64,13 +61,13 @@ export const assets = {
         time: "Live",
         title: "Risk signal",
         detail:
-          "The live activity score is calculated separately from the demo case metrics.",
+          "The live activity score is calculated from recent confirmed Solana transactions.",
       },
     ],
 
     evidence: [
       {
-        wallet: "6ujZ...4fRp",
+        wallet: "6ujZ...N4fRp",
         tx: "Live feed",
         amount: "On-chain",
         type: "Solana Activity",
@@ -85,9 +82,10 @@ export const assets = {
     risk: spacexRisk,
     level: getRiskLevel(spacexRisk),
     volume: "$1.24M",
-    status: "Under Investigation",
+    status: "Demo Case",
     signal:
-      "Large wallet activity detected before unusual market movement.",
+      "Illustrative anomaly scenario showing how large wallet activity could be investigated.",
+    dataMode: "demo",
 
     metrics: {
       volumeMultiplier: 4.8,
@@ -97,34 +95,37 @@ export const assets = {
 
     timeline: [
       {
-        time: "09:42",
+        time: "Demo",
         title: "Large wallet transfer",
-        detail: "$420K equivalent moved into a monitored wallet.",
+        detail:
+          "Illustrative $420K transfer used to demonstrate the investigation workflow.",
       },
       {
-        time: "10:18",
-        title: "Volume anomaly detected",
-        detail: "Trading volume increased 4.8x above recent average.",
+        time: "Demo",
+        title: "Volume anomaly",
+        detail:
+          "Simulated trading volume increased 4.8x above the scenario baseline.",
       },
       {
-        time: "11:03",
-        title: "Price movement detected",
-        detail: "Asset price moved sharply after wallet activity.",
+        time: "Demo",
+        title: "Market movement",
+        detail:
+          "Illustrative market movement used to demonstrate signal correlation.",
       },
     ],
 
     evidence: [
       {
-        wallet: "7QxP...4mN2",
-        tx: "5Hd9...Kp31",
+        wallet: "Demo wallet",
+        tx: "Demo transaction",
         amount: "$420K",
-        type: "Large Transfer",
+        type: "Illustrative Transfer",
       },
       {
-        wallet: "9LmR...2Qa8",
-        tx: "8Js4...Vr72",
+        wallet: "Demo wallet",
+        tx: "Demo transaction",
         amount: "$186K",
-        type: "Wallet Accumulation",
+        type: "Illustrative Accumulation",
       },
     ],
   },
@@ -136,9 +137,10 @@ export const assets = {
     risk: openaiRisk,
     level: getRiskLevel(openaiRisk),
     volume: "$842K",
-    status: "Monitoring",
+    status: "Demo Case",
     signal:
-      "Unusual volume spike detected across recent transactions.",
+      "Illustrative volume anomaly scenario used to demonstrate risk detection.",
+    dataMode: "demo",
 
     metrics: {
       volumeMultiplier: 3.1,
@@ -148,37 +150,37 @@ export const assets = {
 
     timeline: [
       {
-        time: "08:15",
+        time: "Demo",
         title: "Volume spike",
         detail:
-          "Trading activity increased rapidly within a short window.",
+          "Simulated activity increased rapidly within the demonstration window.",
       },
       {
-        time: "09:05",
+        time: "Demo",
         title: "Wallet concentration change",
         detail:
-          "A small group of wallets accumulated a larger position.",
+          "Illustrative wallet concentration change used by the demo risk model.",
       },
       {
-        time: "10:21",
-        title: "Monitoring activated",
+        time: "Demo",
+        title: "Investigation triggered",
         detail:
-          "The asset was added to the investigation queue.",
+          "The scenario demonstrates how an asset could enter the investigation queue.",
       },
     ],
 
     evidence: [
       {
-        wallet: "3FaK...91Xe",
-        tx: "2Pn7...Lm44",
+        wallet: "Demo wallet",
+        tx: "Demo transaction",
         amount: "$242K",
-        type: "Volume Spike",
+        type: "Illustrative Volume Spike",
       },
       {
-        wallet: "6RtB...8Nz3",
-        tx: "7Yu2...Qe19",
+        wallet: "Demo wallet",
+        tx: "Demo transaction",
         amount: "$118K",
-        type: "Wallet Concentration",
+        type: "Illustrative Concentration",
       },
     ],
   },
@@ -190,9 +192,10 @@ export const assets = {
     risk: stripeRisk,
     level: getRiskLevel(stripeRisk),
     volume: "$396K",
-    status: "Normal",
+    status: "Demo Case",
     signal:
-      "No major suspicious activity detected.",
+      "Illustrative normal-activity scenario used as a low-risk comparison.",
+    dataMode: "demo",
 
     metrics: {
       volumeMultiplier: 1.2,
@@ -202,37 +205,37 @@ export const assets = {
 
     timeline: [
       {
-        time: "07:30",
+        time: "Demo",
         title: "Routine market activity",
         detail:
-          "Volume remained inside the expected range.",
+          "Simulated volume remains inside the expected scenario range.",
       },
       {
-        time: "09:40",
-        title: "Wallet scan completed",
+        time: "Demo",
+        title: "Wallet scan",
         detail:
-          "No unusual concentration or large transfer detected.",
+          "No simulated concentration or large-transfer anomaly is present.",
       },
       {
-        time: "11:10",
+        time: "Demo",
         title: "Risk score unchanged",
         detail:
-          "Current activity remains within normal parameters.",
+          "The demonstration scenario remains within normal parameters.",
       },
     ],
 
     evidence: [
       {
-        wallet: "4DeN...7Lp2",
-        tx: "1As8...Jk55",
+        wallet: "Demo wallet",
+        tx: "Demo transaction",
         amount: "$48K",
-        type: "Normal Transfer",
+        type: "Illustrative Transfer",
       },
       {
-        wallet: "8QwM...3Ty9",
-        tx: "6Gh3...Bc12",
+        wallet: "Demo wallet",
+        tx: "Demo transaction",
         amount: "$36K",
-        type: "Normal Activity",
+        type: "Illustrative Activity",
       },
     ],
   },
